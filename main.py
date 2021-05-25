@@ -1,5 +1,5 @@
 from tkinter import *
-
+from PIL import ImageTk, Image
 
 
 class QuizStarter:
@@ -7,10 +7,19 @@ class QuizStarter:
  
         background_color="orange"# to set it as background color for all the label widgets
 
+
+        self.bg_image= Image.open("supra.png")
+        self.bg_image = self.bg_image.resize((450, 250), Image.ANTIALIAS)
+        self.bg_image = ImageTk.PhotoImage(self.bg_image)
+
         #frame set up
         self.quiz_frame=Frame(parent, bg = background_color)
         #padx, pady How many pixels to pad widget, horizontally (x) and vertically (y), outside widget's borders.
         self.quiz_frame.grid()#This geometry manager organizes widgets in a table-like structure in the parent widget.
+       #label image
+        self.image_label= Label(self.quiz_frame, image=self.bg_image)
+        self.image_label.place(x=0, y=0, relwidth=1, relheight=1)
+         
                
         #widgets goes below
         self.heading_label=Label(self.quiz_frame, text="Lets test your car knowledge", font=("Tw Cen MT","18","bold"),bg=background_color)
